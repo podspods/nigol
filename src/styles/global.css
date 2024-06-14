@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+--fg-ligth: #9c6644;
+--bg-light : #e6ccb2;
+--primary:#b08968;
+--secondary: #582f0e;
+--warning : #f77f00;
+
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --background-color: var(--fg-ligth);
+    --color: var(--bg-light);
+    background-color: var(--background-color);
+    color: var(--color);
+  }
+}
+
+body {
+  --background-color: var(--bg-ligth);
+  --color: var(--fg-light);
+
+  background-color: var(--background-color);
+  color: var(--color);
+
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
