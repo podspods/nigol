@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import { Providers } from '../components/providers';
 import '../styles/global.css';
-
-const inter = Inter({ subsets: ['latin'] });
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
 
 export const metadata: Metadata = {
   title: 'Nigol',
@@ -17,10 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      {/* <body className={`${inter.className} dark:bg-slate-800 bg-slate-50 fg  dark:text-white  text-black`}> */}
-      <body className={inter.className}>
-      <Providers>
-          <main>{children}</main>
+      <body >
+        <Providers>
+          <main className='max-w-screen-xl '>{children}</main>
         </Providers>
       </body>
     </html>

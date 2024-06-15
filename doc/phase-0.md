@@ -1,8 +1,5 @@
 # nigol
 
-[phase 0 ](./doc/phase-0.md)
-
-
 # technique
 
 1. nextJS
