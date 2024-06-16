@@ -4,6 +4,7 @@
 
 1. nextJS
 1. base mongodb sur docker
+1. cli db mongoose
 1. bcrypt pour le cryptage du mot de passe
 1. axios pour les requette api
 1. jwt pour les token web
@@ -79,6 +80,17 @@ avant de coder
 1. install package
 1. push init to github
 1. change page title
+
+## lib 
+
+```sh
+npm i mongoose
+``` 
+
+typescript 
+
+```sh
+``` 
 
 ## chartre graphique
 

@@ -1,4 +1,5 @@
 'use client';
+import { route } from '@/common/api';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import SubscribeBox from '@/containers/SubscribeBox';
@@ -14,19 +15,19 @@ export default function Home() {
       <h1>{theme}</h1>
       <ul>
         <li>
-          <Link href={'/login'}>login</Link>
+          <Link href={route.account.login}>login</Link>
         </li>
         <li>
-          <Link href={'/logout'}>logout</Link>
+          <Link href={route.account.logout}>logout</Link>
         </li>
         <li>
-          <Link href={'/profile'}>profile</Link>
+          <Link href={route.account.profile}>profile</Link>
         </li>
         <li>
-          <Link href={'/signup'}>signup</Link>
+          <Link href={route.account.signup}>signup</Link>
         </li>
         <li>
-          <Link href={'/verifyEmail'}>verifyEmail</Link>
+          <Link href={route.account.verifyEmail}>verifyEmail</Link>
         </li>
       </ul>
 

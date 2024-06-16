@@ -1,11 +1,58 @@
 # phase 1: création des composants
 
-# composant de base (atom)
-1. button
-1. input
+
+1. [basic component](#basic-component--atom)
+    1. [Button](#button)
+    1. [Label](#label)
+    1. [Input](#input)
+1. [container composant](#container-composant--organisme)
+
+# basic component  (atom)
+## button
+role : do not contains any logic
+
+button should have as standard button: 
+component is just a decoration 
+```js
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  children: React.ReactNode;
+};
+export default function Button({
+  children,
+  ...props
+}: ButtonProps) {
+  return (
+    <>
+      <button {...props}  
+      className='bg-transparent font-semibold hover:text-white py-2 px-4 border hover:border-transparent rounded p-10 m-1 disabled:cursor-not-allowed'  >
+        {children}
+      </button>
+    </>
+  );
+}
+
+```
+
+# Label 
+
+pink if message : else opacity = 0 
+```js
+type LabelProps = React.ButtonHTMLAttributes<HTMLInputElement> & {};
+export default function Label({ value, ...props }: LabelProps) {
+  const bgColor = value === '' ? 'opacity-0' : 'bg-pink';
+  const className = 'rounded font-semibold  p-1 m-1 ' + bgColor;
+  return (
+    <>
+      <input {...props} type='text' readOnly className={className} value={value} />
+    </>
+  );
+}
+```
+
+# input
 
 
-# composant composé : container
+# container composant : organisme
 ## subscribe-box
 
 check username : minimim 6 chars
