@@ -6,6 +6,8 @@ export const api = {
     profile : '/api/account/profile',
     verifyEmail : '/api/account/verifyEmail',
     activate : '/api/account/activate',
+    updateUser : '/api/account/updateUser',
+    
   }
 };
 

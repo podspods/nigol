@@ -6,16 +6,13 @@ import { connect } from '@/db/mongoConfig';
 
 connect();
 
-
-
 export async function POST(request: NextRequest) {
   try {
     const reqBody = await request.json();
-    const {  email, password } = reqBody;
+    const { email, password } = reqBody;
 
     console.log('Login POST reqBody 11==>', reqBody);
-    
-    const user = await usersModel.findOne({ email });
+    const user = await usersModel.findOne({ email: email.toLowerCase()});
 
     // user check
     if (!user) {
@@ -40,7 +37,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-
     // create token data
     const tokenData = {
       id: user._id,
@@ -57,9 +53,10 @@ export async function POST(request: NextRequest) {
       message: 'Login successfull',
       success: true
     });
-    response.cookies.set(process.env.SIGNUP_TOKEN_NAME!, token, { httpOnly: true });
+    response.cookies.set(process.env.SIGNUP_TOKEN_NAME!, token, {
+      httpOnly: true
+    });
     return response;
-    
   } catch (error: any) {
     console.error('Login POST error ', error);
     return NextResponse.json({ error: error.message }, { status: 500 });

@@ -1,6 +1,6 @@
-import { connect } from '@/dbConfig/mongoConfig';
+import { connect } from '@/db/mongoConfig';
+import usersModel from '@/db/userModel';
 import { getDataFromToken } from '@/helpers/getDataFromToken';
-import usersModel from '@/models/userModel';
 import { NextRequest, NextResponse } from 'next/server';
 
 connect();
