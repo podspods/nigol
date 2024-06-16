@@ -2,6 +2,7 @@
 import { api, route } from '@/common/api';
 import Button from '@/components/Button';
 import axios from 'axios';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
@@ -26,6 +27,7 @@ export default function HomePrivate({ ...props }: HomePrivateProps) {
     <>
       <p>HomePrivate</p>
       <Button onClick={handleClick}>Logout</Button>
+      <Link href={route.account.profile} >Profile</Link>
     </>
   );
 }

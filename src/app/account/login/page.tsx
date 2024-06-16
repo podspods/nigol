@@ -20,8 +20,7 @@ export default function Login() {
     try {
       const response = await axios.post(api.account.login, user);
       console.log('handleCheck ==>', response.status);
-
-      
+      router.push(route.home.private);
     } catch (error: any) {
       switch (error.response.status) {
         case 200: {
@@ -35,17 +34,20 @@ export default function Login() {
           console.log('handleCheck =status 401=>', error.response.status);
           setMessage('Unauthorized: Invalid username or password.');
           setErrorCount((prevCount) => prevCount + 1);
+          break;
         }
         case 403: {
           console.log('handleCheck status 403==>', error.response.status);
           setMessage('Unauthorized: user not activated yet.');
           setIsAccountNotActivated(true);
           setErrorCount((prevCount) => prevCount + 1);
+          break;
         }
         default: {
           console.log('handleCheck default==>', error.response.status);
           setMessage('An unexpected error occurred.');
           setErrorCount((prevCount) => prevCount + 1);
+          break;
         }
       }
     } finally {
@@ -59,7 +61,7 @@ export default function Login() {
         <Label value={message} />
         {isAccountNotActivated && (
           <p className='text-center text-sm text-gray-500'>
-            resend activation ?{' '}
+            resend activation ?&nbsp;
             <a className='underline' href={route.account.activate}>
               yes please
             </a>

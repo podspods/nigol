@@ -5,38 +5,33 @@ import nodemailer from 'nodemailer';
 
 export async function sendEmail({ email, emailType, userId }: any) {
   try {
+    const duration = 3600 * 1000;
     const hashedToken = await bcryptjs.hash(userId.toString(), 10);
     if (emailType === 'VERIFY') {
-      await usersModel.findByIdAndUpdate(
-        userId,
-        { verifyToken: hashedToken, verifyTokenExpiry: Date.now() + 3600 * 1000 }
-        // { new: true, runValidators: true }
-      );
+      await usersModel.findByIdAndUpdate(userId, {
+        verifyToken: hashedToken,
+        verifyTokenExpiry: Date.now() + duration
+      });
     } else if (emailType === 'RESET') {
-      await usersModel.findByIdAndUpdate(
-        userId,
-        {
-          forgotPasswordToken: hashedToken,
-          forgotPasswordTokenExpiry: Date.now() + 360 * 1000
-        }
-        // { new: true, runValidators: true }
-      );
+      await usersModel.findByIdAndUpdate(userId, {
+        forgotPasswordToken: hashedToken,
+        forgotPasswordTokenExpiry: Date.now() + duration
+      });
     }
 
     const transport = nodemailer.createTransport({
-      host: 'sandbox.smtp.mailtrap.io',
-      port: 2525,
+      host: process.env.MAIL_HOST,
+      port: parseInt(process.env.MAIL_PORT!, 10),
       auth: {
-        user: 'fd6fe7588281bf',
-        pass: 'c8a775a8a16e90'
-        // to do add user + pass in .env
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
       }
     });
 
-    const linkto : string = `${process.env.DOMAIN}/${route.account.verifyEmail}?token=${hashedToken}`;
-    
+    const linkto: string = `${process.env.DOMAIN}/${route.account.verifyEmail}?token=${hashedToken}`;
+
     const mailOptions = {
-      from: 'pods@freemem.fr',
+      from: process.env.MAIL_FROM,
       to: email,
       subject: emailType === 'VERYFY' ? 'verify email' : 'reset password',
       html: `<p>Click <a href=${linkto}>here</a> to ${
@@ -50,4 +45,3 @@ export async function sendEmail({ email, emailType, userId }: any) {
     throw new Error('email send error', error.message);
   }
 }
-

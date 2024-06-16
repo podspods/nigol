@@ -18,9 +18,15 @@ export const route ={
     profile : '/account/profile',
     verifyEmail : '/account/verifyEmail',
     activate : '/account/activate',
+    
   },
   home : {
     private : '/home/private',
     public : '/home/public'
-  }
+  },
+  about : '/about',
+  faq : '/faq',
+  privacyPolicy : '/privacy-policy',
+  termsCondition : '/terms-condition',
+  
 }

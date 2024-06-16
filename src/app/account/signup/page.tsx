@@ -38,6 +38,13 @@ export default function Signup() {
         Already subscribe ? &nbsp;
         <a className="underline" href={route.account.login}>Login here</a>
       </p>
+
+      <p className="text-center text-sm text-gray-500">
+      By creating an account, you agree to our  &nbsp;
+        <a className="underline" href={route.termsCondition}>terms and conditions</a>
+        and <a className="underline" href={route.privacyPolicy}> privacy policy.</a>
+      </p>
+       
     </div>
   );
 }

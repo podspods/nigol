@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     // --------------- retrieve config  -------------------------
     const reqBody = await request.json();
     const { username, email, password } = reqBody;
-    console.log('POST reqBody 11==>', reqBody);
+    console.log('POST signup reqBody 11==>', reqBody);
 
     // --------------- check user exist in database  email : unique -------------------------
 
@@ -39,7 +39,9 @@ export async function POST(request: NextRequest) {
 
     // ------------------------ send verification email to user -----------
 
-    await sendEmail({ email, emailType: 'VERIFY', userId: savedUser._id });
+    const status = await sendEmail({ email, emailType: 'VERIFY', userId: savedUser._id });
+    console.log('  await sendEmail( ==>', status);
+    
 
     // ---------- send response -------------------------------------
     return NextResponse.json({
