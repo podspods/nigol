@@ -28,7 +28,7 @@ avant de coder
 1. create nextjs app
 
    ```sh
-   npx create-next-app 3-nigol@latest
+ npx create-next-app@latest 6-tailwind --typescript --eslint --tailwind --src-dir --app --import-alias ./components/* --import-alias ./container/*'
    ```
 
    choisir les options :

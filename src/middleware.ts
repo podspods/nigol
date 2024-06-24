@@ -3,6 +3,16 @@ import type { NextRequest } from 'next/server';
 import { publicRoute, watchinRoute } from './common/constant';
 import { route } from './common/api';
 
+// pre-requisite
+
+// | public-route | token | situation                           | action                   |
+// | ------------ | ----- | ----------------------------------- | ------------------------ |
+// | false        | false | access by url                       | to login page            |
+// | false        | true  | normal case                         | do nothing               |
+// | true         | false | normal case                         | do nothing               |
+// | true         | true  | logged and want to log or subscribe | redirect to private home | can subscribe but not login (again)
+
+
 export const SIGNUP_TOKEN = process.env.SIGNUP_TOKEN_NAME;
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
@@ -19,9 +29,9 @@ export function middleware(request: NextRequest) {
 // }
 
 
-
+// we have public path and provate path.
   const isPublicPath: boolean = publicRoute.includes(path);
-
+// check if token in place 
   const signupToken =
     request.cookies.get(process.env.SIGNUP_TOKEN_NAME!)?.value || '';
 

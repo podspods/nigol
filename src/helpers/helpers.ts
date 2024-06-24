@@ -1,11 +1,12 @@
+import { NextRequest } from 'next/server';
+
 export function uniqueId(): string {
   const dateString = Date.now().toString(36);
   const randomness = Math.random().toString(36).slice(2, 9);
   return dateString + randomness;
 }
 
-
-export function  isPasswordComplex  (password: string | undefined): boolean {
+export function isPasswordComplex(password: string | undefined): boolean {
   if (!password) return false;
   // Vérifie la longueur minimale
   if (password.length < 8) return false;
@@ -14,15 +15,18 @@ export function  isPasswordComplex  (password: string | undefined): boolean {
   const hasLowerCase = /[a-z]/.test(password);
   const hasNumber = /[0-9]/.test(password);
   return hasUpperCase && hasLowerCase && hasNumber;
-};
+}
 
+export function isUsernameValide(username: string): boolean {
+  const result = username.length >= 8;
+  console.log('isUsernameValide ==>', result);
 
+  return username.length >= 8;
+}
 
-export function isUsernameValide ( username : string) : boolean {
+export function getSession(request: NextRequest) {
+  const signupToken =
+    request.cookies.get(process.env.SIGNUP_TOKEN_NAME!)?.value || '';
 
-const result = username.length >=8 ; 
-console.log('isUsernameValide ==>', result);
-
-return username.length >=8 
-
+  return signupToken ? signupToken : undefined;
 }

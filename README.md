@@ -17,8 +17,12 @@ Summary
 
 # todo
 
-
-create /app/account/profile/page.tsx
-/app/api/account/profile/route.ts
-
+refresh session   ici leerob  https://www.youtube.com/watch?v=DJvM2lSPn6w
 password reset 
+auth by github
+
+
+source 
+https://github.com/balazsorban44/auth-poc-next/blob/main/lib.ts
+
+blog https://github.com/vercel/next.js/tree/canary/examples/blog
