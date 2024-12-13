@@ -4,10 +4,11 @@ import jwt from 'jsonwebtoken';
 import usersModel from '@/db/userModel';
 import { connect } from '@/db/mongoConfig';
 
-connect();
+
 
 export async function POST(request: NextRequest) {
   try {
+    await connect();
     const reqBody = await request.json();
     const { email, password } = reqBody;
 

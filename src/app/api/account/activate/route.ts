@@ -3,13 +3,14 @@ import usersModel from '@/db/userModel';
 import { sendEmail } from '@/helpers/mailer';
 import { NextRequest, NextResponse } from 'next/server';
 
-connect();
+
 
 export async function POST(request: NextRequest) {
  
 
 
   try {
+    await connect();
     const reqBody = await request.json();
     const { email } = reqBody;
     const user = await usersModel.findOne({ email });

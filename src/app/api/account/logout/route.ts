@@ -1,10 +1,11 @@
 import { connect } from '@/db/mongoConfig';
 import { NextResponse } from 'next/server';
 
-connect();
+
 
 export async function GET() {
   try {
+    await connect();
     const response = NextResponse.json({
       message: 'Logout successful',
       success: true

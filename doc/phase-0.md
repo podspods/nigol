@@ -12,12 +12,11 @@
 # phase projet
 
 1. [phase 0](#phase-0)
-    1. [setup environnement](#setup-environnement)
-    1. [chartre graphique](#chartre-graphique)
-    1. [classe graphique de base](#classe-graphique-de-base)
-    1. [theme changement](#theme-changement)
+   1. [setup environnement](#setup-environnement)
+   1. [chartre graphique](#chartre-graphique)
+   1. [classe graphique de base](#classe-graphique-de-base)
+   1. [theme changement](#theme-changement)
 1. [phase 1](#phase-1)
-
 
 # phase 0
 
@@ -27,19 +26,19 @@ avant de coder
 
 1. create nextjs app
 
-   ```sh
- npx create-next-app@latest 6-tailwind --typescript --eslint --tailwind --src-dir --app --import-alias ./components/* --import-alias ./container/*'
-   ```
+```sh
+npx create-next-app@latest 6-tailwind --typescript --eslint --tailwind --src-dir --app --import-alias ./components/* --import-alias ./containers/*
+```
 
-   choisir les options :
+choisir les options :
 
-   - typescript
-   - tailwind
-   - Eslint
-   - src directory
-   - app router
+- typescript
+- tailwind
+- Eslint
+- src directory
+- app router
 
-   ![alt text](./image/create-nextjs.png)
+![alt text](../images/create-nextjs.png)
 
 1. create directories
 
@@ -68,6 +67,8 @@ avant de coder
 | /src/service                   | utilities          | utils |
 | /src/store                     | utilities          | utils |
 | /src/styles                    | utilities          | utils |
+| /doc                           | documentation      | doc   |
+| /doc/images                    | images             | doc   |
 
 1. create .env
 
@@ -81,16 +82,17 @@ avant de coder
 1. push init to github
 1. change page title
 
-## lib 
+## lib
 
 ```sh
 npm i mongoose
-``` 
+```
 
-typescript 
+typescript
 
 ```sh
-``` 
+
+```
 
 ## chartre graphique
 
@@ -150,7 +152,7 @@ typescript
         ```
 
     installation pour gere darkmode
-    
+
     ```sh
     npm install next-themes
     ```
@@ -170,17 +172,16 @@ typescript
 
     ```
 
-
-
 ## classe graphique de base
 
-nécessite d'apprendre tailwind. 
-
+nécessite d'apprendre tailwind.
 
 ... tuto a faire .....
+
 ```css
 npx create-next-app@latest 6-tailwind --typescript --eslint --tailwind --src-dir --app --import-alias ./components/* --import-alias ./container/*'
 ```
+
 ```sh
 npm install next-themes
 npm install tailwindcss postcss autoprefixer
@@ -189,8 +190,8 @@ npx tailwindcss init -p
 ```
 
 dans global.css
-```css
 
+```css
 @media (prefers-color-scheme: light) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -199,11 +200,10 @@ dans global.css
   }
 }
 ```
+
 permet de passer en mode préférentiel (ici light) quand le navigateur est en mode auomatique (dark ou light)
 
 ![alt text](./images/mode-auto-dark-light.png)
-
-
 
 ## theme changement
 
@@ -310,9 +310,8 @@ en mode normal le texte est text-slate-800 le fond est bg-white
 en mode dark le texte est text-white le fond est bg-slate-800
 
 ```js
- <div className=" bg-white dark:bg-slate-800 'text-slate-800'  dark:text-white">
-        {theme === 'dark' ? 'dark mode' : 'light mode'}
-      </div>
+<div className=" bg-white dark:bg-slate-800 'text-slate-800'  dark:text-white">
+  {theme === 'dark' ? 'dark mode' : 'light mode'}
+</div>
 ```
 
-# phase 2
